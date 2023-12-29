@@ -1,0 +1,219 @@
+﻿@model FiveGuysCalculator.Models.Calculator.Menu
+
+@{
+    ViewBag.Title = "5Guys Calculator";
+    Layout = "~/Views/_SiteMaster.cshtml";
+}
+
+<link rel="stylesheet" href="~/CSS/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+<script>
+    $(function () {
+        $("#accordion").accordion({
+            heightStyle: "content"
+        });
+    });
+</script>
+
+
+<!-- GoStats JavaScript Based Code -->
+<script type="text/javascript" src="http://gostats.com/js/counter.js">
+</script>
+<script type="text/javascript">
+    _gos = 'c3.gostats.com';
+    _goa = 362887;
+    _got = 5;
+    _goi = 1;
+    _gol = 'web site traffic analysis';
+    _GoStatsRun();
+</script>
+<noscript>
+    <a target="_blank" title="web site traffic analysis" href="http://gostats.com">
+        <img alt="web site traffic analysis" src="http://c3.gostats.com/bin/count/a_362887/t_5/i_1/counter.png" style="border-width:0" />
+    </a>
+</noscript>
+<!-- End GoStats JavaScript Based Code -->
+
+<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript" )"></script>
+
+<script src="@Url.Content("~/Scripts/jquery.min.js")" type="text/javascript" )"></script>
+
+<script src="@Url.Content("~/Scripts/javascript.js")" type="text/javascript" )"></script>
+
+<h1 style="text-align: center; color:red">Five Guys Nutrition Calculator</h1>
+
+@using(Html.BeginForm())
+{
+    <div id="container" style="width:1030px; margin:0 auto">
+
+        <div id="LeftBar" style="height:400px;width:360px;float:left;">
+            
+                <link rel="stylesheet" href="~/css/nutritionlabel.css">
+                <section class="performance-facts">
+                    <header class="performance-facts__header">
+                        <h1 class="performance-facts__title">Nutrition Facts</h1>
+                        <p>
+                            Serving Size: Your Selection
+                        </p>
+                        @{foreach (string s in @Model.SelectedItems)
+                        {
+                            <li>@Html.Raw(s)</li>
+                        }
+                        }
+                    </header>
+                    <table class="performance-facts__table">
+                        <thead>
+                            <tr>
+                                <th style="text-align: left;" colspan="3" class="small-info">
+                                    Amount Per Serving
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th style="text-align: left;" colspan="2" class="small-info"> <b>Calories</b> @Model.Total.Calories</th>
+                            </tr>
+                            <tr>
+                                <th style="text-align: left;" colspan="2" class="small-info"> <b>Calories from Fat</b> @Model.Total.CaloriesFromFat g</th>
+                            </tr>
+                            <tr>
+                                <th style="text-align: left;" colspan="2" class="small-info"> <b>Total Fat</b> @Model.Total.TotalFat g </th>
+                                <td>
+                                    <br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="text-align: left;" colspan="2" class="small-info">
+                                    <b>Sodium</b>
+                                    @Model.Total.Sodium mg
+                                </th>
+                                <td>
+                                    <br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="text-align: left;" colspan="2" class="small-info">
+                                    <b>
+                                        Total
+                                        Carbohydrates
+                                    </b> @Model.Total.Carbs g
+                                </th>
+                                <td>
+                                    <br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left;" class="blank-cell">
+                                    <br>
+                                </td>
+                                <th class="small-info"> Dietary Fiber @Model.Total.Fiber g </th>
+                                <td>
+                                    <br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left;" class="blank-cell">
+                                    <br>
+                                </td>
+
+                                <th class="small-info"> Sugars @Model.Total.Sugar g</th>
+                                <td>
+                                    <br>
+                                </td>
+                            </tr>
+                            <tr class="thick-end">
+                                <th style="text-align: left;" colspan="2" class="small-info">
+                                    <b>Protein</b>
+                                    @Model.Total.Protein g
+                                </th>
+                                <td>
+                                    <br>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            <center>
+            <input type="submit" name="UpdateTotals" value="Update Totals" class="submit" />
+                <input type="submit" name="Reset" value="Reset" class="Cancel" />
+
+            </center>
+            
+        </div>
+
+        <div id="Content" style="height:400px;width:670px;float:left;">
+            <center><b>Menu Items</b></center>
+            <div id="labelheader">
+                <table style="width: 640px; height: 32px;" border="0">
+                    <tbody>
+                        <tr>
+                            <td style="width: 260px;">
+                                <span style="color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-size: medium; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 22.399999618530273px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); display: inline !important; float: none;">
+                                    Nutrition Info (grams)
+                                </span>
+                            </td>
+                            <td style="width: 50px; text-align: center;">
+                                Cal<br>
+                            </td>
+                            <td style="width: 50px; text-align: center;">
+                                Fat<br>
+                            </td>
+                            <td style="width: 50px; text-align: center;">
+                                Sodium<br>
+                            </td>
+                            <td style="width: 50px; text-align: center;">
+                                Carbs<br>
+                            </td>
+                            <td style="width: 50px; text-align: center;">
+                                Fiber<br>
+                            </td>
+                            <td style="width: 50px; text-align: center;">
+                                Sugars<br>
+                            </td>
+                            <td style="width: 50px; text-align: center;">
+                                Protein<br>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div><!--Label Header-->
+
+            @*<div id="accordianmenu">*@
+            <div id="accordion">
+                @*<link rel="stylesheet" href="~/css/accordian.css">*@
+                @{int counter = 0;}
+                @foreach (string s in Model.Categories)
+                {
+                    @*@<div class="accordionButton">@s</div>*@
+                    <h3>@s</h3>
+                    <div>
+                    @*<div class="accordionContent">*@
+                        @{var slist = Model.Items.Where(x => x.Section == s);
+                        foreach (FiveGuysCalculator.Models.Calculator.MenuItem m in slist)
+                        {
+                            <table style="width: 640px; height: 32px;" border="0"><tbody><tr><td style="width: 240px;">
+                                <span style="color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-size: medium; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 22.399999618530273px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); display: inline !important; float: none;">
+                                    @*Html.CheckBoxFor(z => z.Items[counter].Selected)*@
+                                    @Html.CheckBoxFor(z => z.Items[counter].Selected, new { id = "item_" + m.ItemName })
+                                    @*Html.CheckBoxFor(z => z.Items[counter].Selected, new { @value = m.Selected})*@
+                                    @Html.LabelFor(z => m.ItemName, m.ItemName)
+                                </span></td>
+                                <td style="width: 50px; text-align: center;">@Model.Items[counter].Calories<br></td>
+                                <td style="width: 50px; text-align: center;">@Model.Items[counter].TotalFat<br></td>
+                                <td style="width: 50px; text-align: center;">@Model.Items[counter].Sodium<br></td>
+                                <td style="width: 50px; text-align: center;">@Model.Items[counter].Carbs<br></td>
+                                <td style="width: 50px; text-align: center;">@Model.Items[counter].Fiber<br></td>
+                                <td style="width: 50px; text-align: center;">@Model.Items[counter].Sugar<br></td>
+                                <td style="width: 50px; text-align: center;">@Model.Items[counter].Protein<br></td>
+                                @{counter++;}
+                             </tr></tbody></table>
+                        }//foreach in slist
+                        }
+                    </div><!--accordian content-->
+                }@*Foreach string s in model categories*@
+            </div><!--Accordian menu-->
+        </div>
+
+    </div>
+}

@@ -1,0 +1,30 @@
+@{for (int c = 0; c < Model.Items.Count; c++)
+                          {
+                              if (Model.Items[c].Section == s)
+                            {
+                                <table style="width: 640px; height: 32px;" border="0">
+                                  <tbody>
+                                    <tr>
+                                      <td style="width: 240px;"><span style="color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-size: medium; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 22.399999618530273px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); display: inline !important; float: none;">
+                                          @Html.CheckBoxFor(m => m.Items[c].Selected, new { value = Model.Items[c].ItemName })
+                                          @Html.LabelFor(m => m.Items[c].ItemName, Model.Items[c].ItemName)</span></td>
+                                      <td style="width: 50px; text-align: center;">@Model.Items[c].Calories<br>
+                                      </td>
+                                      <td style="width: 50px; text-align: center;">@Model.Items[c].TotalFat<br>
+                                      </td>
+                                      <td style="width: 50px; text-align: center;">@Model.Items[c].Sodium<br>
+                                      </td>
+                                      <td style="width: 50px; text-align: center;">@Model.Items[c].Carbs<br>
+                                      </td>
+                                      <td style="width: 50px; text-align: center;">@Model.Items[c].Fiber<br>
+                                      </td>
+                                      <td style="width: 50px; text-align: center;">@Model.Items[c].Sugar<br>
+                                      </td>
+                                      <td style="width: 50px; text-align: center;">@Model.Items[c].Protein<br>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table> 
+                                
+                            }//if
+                         }//for 

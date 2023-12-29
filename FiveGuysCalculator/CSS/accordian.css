@@ -1,0 +1,22 @@
+﻿    #accordianmenu {
+                    width: 640px;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+
+                .accordionButton {
+                    width: 640px;
+                    float: right;
+                    background: #C0C0C0;
+                    border-bottom: 1px solid #FFFFFF;
+                    cursor: pointer;
+                }
+
+                .accordionContent {
+                    width: 640px;
+                    float: right;
+                    background: #FFFFFF;
+                    display: none;
+                }
+
+

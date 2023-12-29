@@ -1,0 +1,37 @@
+<div class="accordionButton">Button 1 Content</div>
+                <div class="accordionContent">Content 1<br /><br /><br /><br /><br /><br /><br /><br />Long Example</div>
+                <div class="accordionButton">Button 2 Content</div>
+                <div class="accordionContent">Content 2<br /><br /><br /><br /><br />Medium Example</div>
+                <div class="accordionButton">Button 3 Content</div>
+                <div class="accordionContent">Content 1<br />Short Example</div>
+                <div class="accordionButton">Button 4 Content</div>
+                <div class="accordionContent">
+                @{foreach (FiveGuysCalculator.Models.Calculator.MenuItem m in Model.Items)
+                  {
+                       @Html.CheckBox(m.itemName);
+                    @Html.Label(m.itemName);
+                    @Html.Raw("<br />"); 
+                    
+                  }
+                      
+                }
+                    </div>
+
+
+
+
+
+<div class="accordionContent">
+                        @{foreach (FiveGuysCalculator.Models.Calculator.MenuItem m in Model.Items)
+                         {
+                            if (m.section == s)
+                            {
+                                
+                                @Html.CheckBox(m.itemName);
+                                @Html.Label(m.itemName);
+                                @Html.Raw("<br />");
+                            }//if
+                        }
+                        Html.Raw("</div>");
+                     @}
+                 }
